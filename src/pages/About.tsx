@@ -265,9 +265,9 @@ const About = () => {
       {/* Team Section */}
       <section className="py-12 relative z-10" ref={teamRef}>
         <div className="container mx-auto px-4 max-w-8xl">
-          <h2 className="text-2xl font-bold mb-6 text-center text-black">This is MAPS International</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center text-black">This is MAPS International WLL</h2>
           <p className="text-lg text-gray-700 text-center mb-8 max-w-5xl mx-auto">
-            MAPS International is proudly led by visionary cultural leaders. Our diverse and versatile team is made up of cultural ambassadors, youth advocates, creative strategists, and community builders who love creating cultural magic. Meet our community:
+            MAPS International WLL is proudly led by visionary cultural leaders. Our diverse and versatile team is made up of cultural ambassadors, youth advocates, creative strategists, and community builders who love creating cultural magic. Meet our community:
           </p>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -306,7 +306,7 @@ const About = () => {
               Ready to Join Our Mission?
             </h2>
             <p className="text-xl text-white/90 mb-8">
-              Whether you're an artist, youth leader, or cultural enthusiast, there's a place for you in the MAPS International community.
+              Whether you're an artist, youth leader, or cultural enthusiast, there's a place for you in the MAPS International WLL community.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-gradient-to-r from-gray-700 to-gray-800 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-gray-700/25 transition-all duration-300 hover:scale-105">

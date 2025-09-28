@@ -124,7 +124,7 @@ export const projects: Project[] = [
     title: "The YOUTH Platform - Coming Soon",
     year: 2025,
     description: "A comprehensive 3-day mega event empowering 500+ young innovators across 8 focus areas including technology, arts, culture, and STEM. Launching soon!",
-    longDescription: "The YOUTH Platform is MAPS International's flagship youth empowerment initiative, designed as a 3-day mega event that brings together 500+ young people from 50+ educational institutions. This comprehensive platform spans 8 critical focus areas: Innovation & Technology (coding, AI, robotics, startup competitions), Art & Creative Expression (live painting, digital art, sculpture, photography), Culture & Heritage (Qatari heritage, international exchange, language learning), Sports & Physical Wellness (sports innovation, fitness, team building), Education & Learning (study skills, research methodology, critical thinking), Music & Performance (live music competitions, music production, cultural exchange), Fashion & Design (sustainable fashion, traditional clothing innovation), and STEM & Scientific Research (science fairs, lab skills, space science, environmental research).",
+    longDescription: "The YOUTH Platform is MAPS International WLL's flagship youth empowerment initiative, designed as a 3-day mega event that brings together 500+ young people from 50+ educational institutions. This comprehensive platform spans 8 critical focus areas: Innovation & Technology (coding, AI, robotics, startup competitions), Art & Creative Expression (live painting, digital art, sculpture, photography), Culture & Heritage (Qatari heritage, international exchange, language learning), Sports & Physical Wellness (sports innovation, fitness, team building), Education & Learning (study skills, research methodology, critical thinking), Music & Performance (live music competitions, music production, cultural exchange), Fashion & Design (sustainable fashion, traditional clothing innovation), and STEM & Scientific Research (science fairs, lab skills, space science, environmental research).",
     stats: { 
       focus_areas: 8, 
       youth_engaged: 500,
@@ -322,7 +322,7 @@ export const projects: Project[] = [
           "Created lasting cultural bridge between India and Qatar",
           "Professional event execution with meticulous attention to detail",
           "Received widespread appreciation for cultural authenticity",
-          "Established MAPS International as cultural event specialist"
+          "Established MAPS International WLL as cultural event specialist"
         ],
         mediaCoverage: {
           gulf_times: "Cultural event coverage and community appreciation",

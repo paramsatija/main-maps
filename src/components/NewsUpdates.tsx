@@ -20,7 +20,7 @@ const NewsUpdates = () => {
     {
       id: 2,
       title: "New Cultural Partnership with European Union",
-      description: "MAPS International announces groundbreaking partnership with EU Cultural Program, expanding our reach to 15 additional European countries.",
+      description: "MAPS International WLL announces groundbreaking partnership with EU Cultural Program, expanding our reach to 15 additional European countries.",
       date: "October 12, 2025",
       category: "Partnership",
       icon: <Globe className="w-6 h-6" />,
@@ -55,8 +55,8 @@ const NewsUpdates = () => {
     },
     {
       id: 5,
-      title: "MAPS International Celebrates 11 Years of Impact",
-      description: "Founded in 2014, MAPS International marks 11 years of cultural diplomacy excellence, having connected 70+ countries through transformative experiences.",
+      title: "MAPS International WLL Celebrates 11 Years of Impact",
+      description: "Founded in 2014, MAPS International WLL marks 11 years of cultural diplomacy excellence, having connected 70+ countries through transformative experiences.",
       date: "October 1, 2025",
       category: "Milestone",
       icon: <Users className="w-6 h-6" />,

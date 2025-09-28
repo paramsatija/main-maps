@@ -226,7 +226,7 @@ const Index = () => {
                 Mapping Possibilities. Building Impact.
               </p>
               <p className="text-white/70 text-sm">
-                © 2024 MAPS International WLL. All rights reserved.
+                © 2025 MAPS International WLL. All rights reserved.
               </p>
             </div>
             

@@ -65,7 +65,7 @@ const CallToActionSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-dark mb-6">Join Our Community</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Whether you're an artist, partner, youth leader, or cultural enthusiast, there's a place for you in the MAPS International community.
+            Whether you're an artist, partner, youth leader, or cultural enthusiast, there's a place for you in the MAPS International WLL community.
           </p>
         </div>
 

@@ -7,14 +7,14 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       id: 1,
-      quote: "MAPS International has been instrumental in bringing together artists from across the globe. QIAF has become a cornerstone of cultural diplomacy in Qatar.",
+      quote: "MAPS International WLL has been instrumental in bringing together artists from across the globe. QIAF has become a cornerstone of cultural diplomacy in Qatar.",
       author: "H.E. Sheikh Abdulrahman bin Hamad Al Thani",
       position: "Minister of Culture, Qatar",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
     },
     {
       id: 2,
-      quote: "The youth programs at MAPS International have transformed how young people engage with space science and cultural exchange. It's truly inspiring.",
+      quote: "The youth programs at MAPS International WLL have transformed how young people engage with space science and cultural exchange. It's truly inspiring.",
       author: "Dr. Sarah Al-Mahmoud",
       position: "Director, Qatar Foundation",
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
@@ -28,7 +28,7 @@ const TestimonialsSection = () => {
     },
     {
       id: 4,
-      quote: "MAPS International's commitment to cultural excellence and youth empowerment is unmatched. They're building bridges between cultures and communities.",
+      quote: "MAPS International WLL's commitment to cultural excellence and youth empowerment is unmatched. They're building bridges between cultures and communities.",
       author: "Ambassador John Smith",
       position: "US Embassy, Doha",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
