@@ -9,13 +9,13 @@ const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { name: "Work", path: "/work" },
     { name: "About", path: "/about" },
+    { name: "Work", path: "/work" },
     { name: "Connect", path: "/connect" }
   ];
 
   const isActive = (path: string) => {
-    if (path === "/work" && location.pathname === "/") return true;
+    if (path === "/about" && location.pathname === "/") return true;
     return location.pathname === path;
   };
 
@@ -25,10 +25,14 @@ const Navigation = () => {
   };
 
   // Check if we're on a dark background page for white text
-  const isDarkPage = location.pathname === "/about" || location.pathname.startsWith("/projects/") || location.pathname === "/" || location.pathname === "/connect";
+  const isDarkPage = location.pathname === "/about" || location.pathname.startsWith("/projects/") || location.pathname === "/" || location.pathname === "/connect" || location.pathname === "/work";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-none border-b border-transparent transition-all duration-300">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isDarkPage 
+        ? 'bg-black/20 backdrop-blur-md border-b border-white/10' 
+        : 'bg-white/90 backdrop-blur-md border-b border-gray-200/50'
+    }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -37,23 +41,23 @@ const Navigation = () => {
             onClick={() => navigate("/")}
           >
             {isDarkPage ? (
-              // Option 1: Actual MAPS Logo for dark pages
+              // Option 1: Clean MAPS Logo for dark pages
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/30 rounded-xl p-2">
-                  <img 
-                    src={mapsLogo} 
-                    alt="MAPS International" 
-                    className="w-full h-full object-contain"
-                  />
-                </div>
+                <img 
+                  src={mapsLogo} 
+                  alt="MAPS International" 
+                  className="w-12 h-12 object-contain hover:scale-110 transition-transform duration-300"
+                />
                 <span className="text-xl font-bold text-white text-glow">MAPS</span>
               </div>
             ) : (
-              // Option 2: Stylized text with icon for light pages
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-magenta to-teal rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">M</span>
-                </div>
+              // Option 2: Clean MAPS Logo for light pages
+              <div className="flex items-center gap-3">
+                <img 
+                  src={mapsLogo} 
+                  alt="MAPS International" 
+                  className="w-12 h-12 object-contain hover:scale-110 transition-transform duration-300"
+                />
                 <span className="text-xl font-bold text-dark">MAPS</span>
               </div>
             )}
@@ -68,11 +72,11 @@ const Navigation = () => {
                 className={`text-lg font-medium transition-all duration-300 ${
                   isActive(item.path)
                     ? isDarkPage 
-                      ? "text-white border-b-2 border-white pb-1 text-glow" 
-                      : "text-dark border-b-2 border-dark pb-1"
+                      ? "text-white border-b-2 border-white pb-1 font-bold" 
+                      : "text-gray-900 border-b-2 border-gray-900 pb-1 font-bold"
                     : isDarkPage
-                      ? "text-white/90 hover:text-white hover:text-glow hover:scale-105"
-                      : "text-gray-600 hover:text-dark"
+                      ? "text-white/90 hover:text-white hover:scale-105"
+                      : "text-gray-700 hover:text-gray-900 hover:scale-105"
                 }`}
                 style={{
                   textShadow: isDarkPage ? '0 0 10px rgba(255, 255, 255, 0.5)' : 'none',
@@ -124,10 +128,10 @@ const Navigation = () => {
                   onClick={() => handleNavClick(item.path)}
                   className={`block w-full text-left text-lg font-medium transition-all duration-300 ${
                     isActive(item.path)
-                      ? isDarkPage ? "text-white text-glow" : "text-dark"
+                      ? isDarkPage ? "text-white font-bold" : "text-gray-900 font-bold"
                       : isDarkPage 
-                        ? "text-white/90 hover:text-white hover:text-glow" 
-                        : "text-gray-600 hover:text-dark"
+                        ? "text-white/90 hover:text-white" 
+                        : "text-gray-700 hover:text-gray-900"
                   }`}
                   style={{
                     textShadow: isDarkPage ? '0 0 10px rgba(255, 255, 255, 0.5)' : 'none',

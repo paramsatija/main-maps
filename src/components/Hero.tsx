@@ -101,7 +101,48 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen hero-gradient overflow-hidden">
+    <>
+      <style>
+        {`
+          @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+          }
+          
+          @keyframes blink {
+            0%, 50% { border-color: #FFD700; }
+            51%, 100% { border-color: transparent; }
+          }
+          
+          @keyframes neon-pulse {
+            0%, 100% { 
+              text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700;
+            }
+            50% { 
+              text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+            }
+          }
+          
+          @keyframes electric-glow {
+            0%, 100% { 
+              text-shadow: 0 0 3px #00FFFF, 0 0 6px #00FFFF;
+            }
+            50% { 
+              text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF;
+            }
+          }
+          
+          .typewriter-text {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.1em;
+            border-right: 3px solid #FFD700;
+            animation: typewriter 3s steps(20) 1s 1 normal both, blink 1s infinite 4s;
+          }
+        `}
+      </style>
+      <section className="relative min-h-screen hero-gradient overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0"
@@ -113,83 +154,64 @@ const Hero = () => {
         }}
       />
       
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
 
       {/* Particle Canvas Placeholder */}
       <canvas className="particle-canvas" id="hero-particles" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 py-20 flex flex-col items-center justify-center min-h-screen text-center">
-        {/* MAPS Logo at Top */}
-        <div className="mb-12 animate-fade-in">
-          <div className="w-64 h-64 bg-white/10 backdrop-blur-md border-4 border-white/30 rounded-3xl p-4 shadow-2xl hover:shadow-white/20 transition-all duration-300 hover:scale-105">
+        {/* MAPS Logo - Large */}
+        <div className="-mb-6 -mt-8 animate-fade-in">
+          <div className="w-96 md:w-[500px] transition-all duration-300 hover:scale-105">
             <img
               src={mapsLogo}
               alt="MAPS International Logo"
-              className="w-full h-full object-contain rounded-2xl"
+              className="w-full h-auto object-cover"
             />
           </div>
         </div>
 
-        {/* Company Name - Scroll Responsive */}
-        <h1 
-          className="text-white font-bold mb-8 animate-slide-up transition-all duration-500" 
-          style={{ 
-            animationDelay: '0.1s',
-            fontSize: Math.max(45, 100 - scrollY * 0.2) + 'px',
-            lineHeight: 1.1
-          }}
-        >
-          MAPS International WLL
-        </h1>
-
-        {/* Main Tagline */}
-        <h2 className="text-white text-3xl md:text-5xl font-bold mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-          Where Cultures <span className="text-gradient">Converge</span>
+        {/* Main Tagline - Typewriter Effect */}
+        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 typewriter-text" style={{ 
+          animationDelay: '0.2s',
+          color: '#FFD700',
+          fontFamily: 'monospace'
+        }}>
+          Mapping Possibilities
         </h2>
 
+        {/* Subtitle - Electric Glow */}
+        <h3 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 animate-slide-up" style={{ 
+          animationDelay: '0.3s',
+          color: '#00FFFF',
+          animation: 'electric-glow 2s ease-in-out infinite alternate, slide-up 0.8s ease-out 0.3s both'
+        }}>
+          Building Impact
+        </h3>
+
         {/* Description */}
-        <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-12 max-w-4xl animate-slide-up" style={{ animationDelay: '0.3s' }}>
-          The world's artists are coming to Qatar.<br />
-          Be part of something extraordinary.
+        <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-8 max-w-4xl animate-slide-up" style={{ animationDelay: '0.4s' }}>
+          Cultural Diplomacy • Events • Youth • Innovation
         </p>
 
-        {/* Event Details */}
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 mb-12 max-w-2xl animate-slide-up" style={{ animationDelay: '0.4s' }}>
-          <p className="text-white text-lg font-semibold mb-4">QIAF 2025 • December 7-12 • Katara Cultural Village</p>
+        {/* Action Buttons */}
+        <div className="flex flex-wrap justify-center gap-6 animate-slide-up" style={{ animationDelay: '0.5s' }}>
+          <button 
+            onClick={() => document.getElementById('card-deck')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-8 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-yellow-400/50 transition-all duration-300 hover:scale-105 border-2 border-yellow-400"
+            style={{
+              boxShadow: '0 0 20px rgba(255, 215, 0, 0.5)',
+              textShadow: '0 0 10px rgba(0, 0, 0, 0.5)'
+            }}
+          >
+            Explore Our Work
+          </button>
           <button 
             onClick={openSponsorModal}
-            className="bg-gradient-to-r from-magenta to-teal text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-magenta/25 transition-all duration-300 hover:scale-105"
+            className="bg-white text-black px-8 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-white/50 transition-all duration-300 hover:scale-105 border border-gray-300"
           >
-            Join QIAF 2025
+            Collaborate With Us
           </button>
-        </div>
-
-        {/* Stats Row - Animated Numbers */}
-        <div 
-          ref={numbersRef}
-          className="flex flex-wrap justify-center gap-12 animate-scale-in" 
-          style={{ animationDelay: '0.5s' }}
-        >
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-2 text-glow">
-              {animatedNumbers.artists}+
-            </div>
-            <div className="text-white/70 text-sm">Artists</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-2 text-glow">
-              {animatedNumbers.countries}+
-            </div>
-            <div className="text-white/70 text-sm">Countries</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-2 text-glow">
-              {animatedNumbers.years}+
-            </div>
-            <div className="text-white/70 text-sm">Years</div>
-          </div>
         </div>
       </div>
 
@@ -200,6 +222,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

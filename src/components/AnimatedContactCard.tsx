@@ -34,7 +34,7 @@ const AnimatedContactCard = ({
   return (
     <div
       ref={combinedRef}
-      className="group cursor-pointer glass rounded-2xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/20 hover:border-white/40 card-3d magnetic"
+      className="group cursor-pointer glass rounded-2xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-red-300/40 hover:border-red-400/60 card-3d magnetic"
       onClick={onClick}
       style={{
         transform: `translate(${position.x}px, ${position.y}px) perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
@@ -42,16 +42,17 @@ const AnimatedContactCard = ({
         '--magnetic-y': `${position.y}px`,
         '--rotate-x': `${tilt.x}deg`,
         '--rotate-y': `${tilt.y}deg`,
-        background: 'rgba(255, 255, 255, 0.1)',
+        background: 'rgba(220, 38, 38, 0.25)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
+        boxShadow: '0 8px 32px rgba(220, 38, 38, 0.25)',
       } as React.CSSProperties}
     >
       <div className="flex items-start justify-between mb-6">
         <div 
           className={`text-${color} group-hover:scale-110 transition-transform duration-300 group-hover:text-glow`}
           style={{ 
-            filter: 'drop-shadow(0 0 8px rgba(233, 30, 99, 0.3))',
+            filter: 'drop-shadow(0 0 8px rgba(220, 38, 38, 0.6))',
             transition: 'all 0.3s cubic-bezier(0.23, 1, 0.320, 1)'
           }}
         >
@@ -83,7 +84,7 @@ const AnimatedContactCard = ({
       <div 
         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
-          background: `linear-gradient(135deg, rgba(233, 30, 99, 0.05) 0%, rgba(0, 188, 212, 0.05) 100%)`,
+          background: `linear-gradient(135deg, rgba(220, 38, 38, 0.3) 0%, rgba(185, 28, 28, 0.2) 50%, rgba(153, 27, 27, 0.1) 100%)`,
           filter: 'blur(20px)',
         }}
       />

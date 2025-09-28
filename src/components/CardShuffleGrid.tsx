@@ -33,6 +33,10 @@ const CardShuffle: React.FC<CardShuffleProps> = ({
   const [shuffleOffset, setShuffleOffset] = useState(0);
 
   const handleClick = () => {
+    // Disable navigation for Youth Platform (coming soon)
+    if (id === "youth-platform") {
+      return;
+    }
     navigate(`/projects/${id}`);
   };
 
@@ -81,14 +85,18 @@ const CardShuffle: React.FC<CardShuffleProps> = ({
     <div
       ref={cardRef}
       onClick={handleClick}
-      className={`group cursor-pointer relative overflow-hidden rounded-3xl transition-all duration-700 hover:-translate-y-2 flex flex-col transform ${
+      className={`group relative overflow-hidden rounded-3xl transition-all duration-700 flex flex-col transform ${
+        id === "youth-platform" 
+          ? 'cursor-not-allowed opacity-75' 
+          : 'cursor-pointer hover:-translate-y-2'
+      } ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
       }`}
       style={{
-        background: 'rgba(255, 255, 255, 0.1)',
+        background: 'rgba(255, 255, 255, 0.8)',
         backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 255, 255, 0.2)',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
         transitionDelay: `${isLegacy ? index * 200 : (index * 200) + 1000}ms`,
         transform: isVisible ? `translateY(0) translateX(0) rotateZ(0deg)` : `translateY(20px) translateX(0) rotateZ(0deg)`
       }}
@@ -113,10 +121,15 @@ const CardShuffle: React.FC<CardShuffleProps> = ({
       <div className="p-6">
         {/* Category Badge */}
         <div className="flex items-center gap-2 mb-3">
-          <div className="text-white/90">{renderIcon(iconType, "w-4 h-4")}</div>
-          <span className="text-white/80 text-sm font-medium bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30">
+          <div className="text-gray-700">{renderIcon(iconType, "w-4 h-4")}</div>
+          <span className="text-gray-600 text-sm font-medium bg-gray-100 backdrop-blur-sm px-3 py-1 rounded-full border border-gray-200">
             {category}
           </span>
+          {id === "youth-platform" && (
+            <span className="text-white text-sm font-medium bg-gradient-to-r from-orange-500 to-red-500 backdrop-blur-sm px-3 py-1 rounded-full border border-orange-400 animate-pulse">
+              Coming Soon
+            </span>
+          )}
           {featured && (
             <span className="text-white text-sm font-medium bg-gradient-to-r from-magenta/80 to-teal/80 backdrop-blur-sm px-3 py-1 rounded-full border border-magenta/50">
               Legacy
@@ -125,30 +138,30 @@ const CardShuffle: React.FC<CardShuffleProps> = ({
         </div>
 
         {/* Title */}
-        <h3 className="text-white text-lg md:text-xl font-bold mb-2 leading-tight group-hover:text-white/90 transition-colors">
+        <h3 className="text-black text-lg md:text-xl font-bold mb-2 leading-tight group-hover:text-gray-700 transition-colors">
           {title}
         </h3>
 
         {/* Description */}
-        <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-2">
+        <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2">
           {description}
         </p>
 
         {/* Stats */}
-        <div className="flex gap-4 text-white mb-4">
+        <div className="flex gap-4 text-gray-700 mb-4">
           {Object.entries(stats).slice(0, 3).map(([key, value]) => (
             <div key={key} className="text-center">
               <div className="text-sm font-bold">{value}+</div>
-              <div className="text-xs text-white/70 capitalize">{key.replace('_', ' ')}</div>
+              <div className="text-xs text-gray-500 capitalize">{key.replace('_', ' ')}</div>
             </div>
           ))}
         </div>
 
         {/* View Project Button */}
         <div className="flex items-center justify-between">
-          <span className="text-white/70 text-sm font-medium">View Project</span>
-          <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300 border border-white/30">
-            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <span className="text-gray-600 text-sm font-medium">View Project</span>
+          <div className="w-8 h-8 bg-gray-100 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-gray-200 transition-colors duration-300 border border-gray-200">
+            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </div>
@@ -189,8 +202,8 @@ const CardShuffleGrid: React.FC<CardShuffleGridProps> = ({ projects }) => {
       {/* Legacy Projects Section */}
       <div className="space-y-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4 text-shimmer">Legacy Projects</h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-black mb-4 text-shimmer">Legacy Projects</h2>
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Our flagship initiatives that have transformed Qatar's cultural landscape.
           </p>
         </div>
@@ -210,8 +223,8 @@ const CardShuffleGrid: React.FC<CardShuffleGridProps> = ({ projects }) => {
       {/* Regular Projects Section */}
       <div className="space-y-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4 text-shimmer">Our Projects</h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-black mb-4 text-shimmer">Our Projects</h2>
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Discover our complete portfolio of cultural initiatives and programs.
           </p>
         </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getFeaturedProjects, renderIcon } from "@/data/projects";
+import backgroundImage from "@/assets/background.jpg";
 
 const CardDeck = () => {
   const [currentCard, setCurrentCard] = useState(0);
@@ -22,12 +23,28 @@ const CardDeck = () => {
 
   return (
     <>
-      <section id="card-deck" className="py-20 bg-gradient-to-br from-light to-white">
-        <div className="container mx-auto px-6">
+      <section id="card-deck" className="py-20 relative overflow-hidden">
+        {/* Background Image with 70% dimming */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        
+        {/* 70% dimming overlay */}
+        <div className="absolute inset-0 bg-black/70" />
+        
+        <div className="container mx-auto px-6 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-dark mb-4">Our Legacy Projects</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <h2 className="text-white mb-4" style={{
+              textShadow: '0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6)'
+            }}>Our Legacy Projects</h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               Discover our flagship initiatives that have transformed Qatar's cultural landscape and connected communities across 70+ countries.
             </p>
           </div>
