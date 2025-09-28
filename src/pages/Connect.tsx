@@ -117,6 +117,963 @@ const Connect = () => {
     setActiveForm(null);
   };
 
+  // Form field renderers for different categories
+  const renderSponsorForm = () => (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-dark mb-2">
+            Full Name *
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value={formData.name}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+            placeholder="Your full name"
+          />
+        </div>
+        <div>
+          <label htmlFor="organization" className="block text-sm font-medium text-dark mb-2">
+            Organization *
+          </label>
+          <input
+            type="text"
+            id="organization"
+            name="organization"
+            required
+            value={formData.organization}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+            placeholder="Your organization"
+          />
+        </div>
+      </div>
+      
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-dark mb-2">
+            Email Address *
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            value={formData.email}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+            placeholder="your.email@example.com"
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-dark mb-2">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+            placeholder="+1 (555) 123-4567"
+          />
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="budget" className="block text-sm font-medium text-dark mb-2">
+            Budget Range *
+          </label>
+          <select
+            id="budget"
+            name="budget"
+            required
+            value={formData.budget}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+          >
+            <option value="">Select budget range</option>
+            <option value="1k-5k">$1,000 - $5,000</option>
+            <option value="5k-25k">$5,000 - $25,000</option>
+            <option value="25k-100k">$25,000 - $100,000</option>
+            <option value="100k+">$100,000+</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="type" className="block text-sm font-medium text-dark mb-2">
+            Sponsorship Type *
+          </label>
+          <select
+            id="type"
+            name="type"
+            required
+            value={formData.type}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+          >
+            <option value="">Select sponsorship type</option>
+            <option value="event">Event Sponsorship</option>
+            <option value="program">Program Sponsorship</option>
+            <option value="general">General Sponsorship</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="timeline" className="block text-sm font-medium text-dark mb-2">
+          Expected Timeline
+        </label>
+        <select
+          id="timeline"
+          name="timeline"
+          value={formData.timeline}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+        >
+          <option value="">Select timeline</option>
+          <option value="immediate">Immediate (1-2 weeks)</option>
+          <option value="short">Short term (1-3 months)</option>
+          <option value="medium">Medium term (3-6 months)</option>
+          <option value="long">Long term (6+ months)</option>
+        </select>
+      </div>
+      
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium text-dark mb-2">
+          Sponsorship Goals & Details *
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={5}
+          value={formData.message}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all resize-none"
+          placeholder="Tell us about your sponsorship goals, target audience, and how you'd like to collaborate..."
+        />
+      </div>
+    </div>
+  );
+
+  const renderPartnerForm = () => (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-dark mb-2">
+            Full Name *
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value={formData.name}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+            placeholder="Your full name"
+          />
+        </div>
+        <div>
+          <label htmlFor="organization" className="block text-sm font-medium text-dark mb-2">
+            Organization *
+          </label>
+          <input
+            type="text"
+            id="organization"
+            name="organization"
+            required
+            value={formData.organization}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+            placeholder="Your organization"
+          />
+        </div>
+      </div>
+      
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-dark mb-2">
+            Email Address *
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            value={formData.email}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+            placeholder="your.email@example.com"
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-dark mb-2">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+            placeholder="+1 (555) 123-4567"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="website" className="block text-sm font-medium text-dark mb-2">
+          Organization Website
+        </label>
+        <input
+          type="url"
+          id="website"
+          name="website"
+          value={formData.website}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+          placeholder="https://your-organization.com"
+        />
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="type" className="block text-sm font-medium text-dark mb-2">
+            Partnership Type *
+          </label>
+          <select
+            id="type"
+            name="type"
+            required
+            value={formData.type}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+          >
+            <option value="">Select partnership type</option>
+            <option value="cultural-exchange">Cultural Exchange</option>
+            <option value="educational">Educational</option>
+            <option value="event">Event Partnership</option>
+            <option value="long-term">Long-term Collaboration</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="experience" className="block text-sm font-medium text-dark mb-2">
+            Organization Size
+          </label>
+          <select
+            id="experience"
+            name="experience"
+            value={formData.experience}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+          >
+            <option value="">Select organization size</option>
+            <option value="small">Small (1-50 employees)</option>
+            <option value="medium">Medium (51-200 employees)</option>
+            <option value="large">Large (201-1000 employees)</option>
+            <option value="enterprise">Enterprise (1000+ employees)</option>
+          </select>
+        </div>
+      </div>
+      
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium text-dark mb-2">
+          Partnership Vision & Previous Collaborations *
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={5}
+          value={formData.message}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all resize-none"
+          placeholder="Tell us about your partnership vision, previous collaborations, and how you'd like to work together..."
+        />
+      </div>
+    </div>
+  );
+
+  const renderArtistForm = () => (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-dark mb-2">
+            Full Name *
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value={formData.name}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+            placeholder="Your full name"
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-dark mb-2">
+            Email Address *
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            value={formData.email}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+            placeholder="your.email@example.com"
+          />
+        </div>
+      </div>
+      
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-dark mb-2">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+            placeholder="+1 (555) 123-4567"
+          />
+        </div>
+        <div>
+          <label htmlFor="website" className="block text-sm font-medium text-dark mb-2">
+            Portfolio Website
+          </label>
+          <input
+            type="url"
+            id="website"
+            name="website"
+            value={formData.website}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+            placeholder="https://your-portfolio.com"
+          />
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="artStyle" className="block text-sm font-medium text-dark mb-2">
+            Art Style *
+          </label>
+          <select
+            id="artStyle"
+            name="artStyle"
+            required
+            value={formData.artStyle}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+          >
+            <option value="">Select art style</option>
+            <option value="digital">Digital Art</option>
+            <option value="traditional">Traditional Art</option>
+            <option value="mixed-media">Mixed Media</option>
+            <option value="photography">Photography</option>
+            <option value="sculpture">Sculpture</option>
+            <option value="painting">Painting</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="experience" className="block text-sm font-medium text-dark mb-2">
+            Experience Level *
+          </label>
+          <select
+            id="experience"
+            name="experience"
+            required
+            value={formData.experience}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+          >
+            <option value="">Select experience level</option>
+            <option value="emerging">Emerging Artist</option>
+            <option value="mid-career">Mid-career Artist</option>
+            <option value="established">Established Artist</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="medium" className="block text-sm font-medium text-dark mb-2">
+          Preferred Medium
+        </label>
+        <input
+          type="text"
+          id="medium"
+          name="medium"
+          value={formData.medium}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+          placeholder="e.g., Oil on canvas, Digital illustration, Watercolor..."
+        />
+      </div>
+
+      {/* File Upload Section */}
+      <div>
+        <label className="block text-sm font-medium text-dark mb-2">
+          Portfolio & Artwork Samples *
+        </label>
+        <div className="border-2 border-dashed border-accent/30 rounded-xl p-6 text-center hover:border-accent/50 transition-colors">
+          <Upload className="w-8 h-8 text-accent mx-auto mb-2" />
+          <p className="text-sm text-gray-600 mb-2">
+            Upload your portfolio (PDF) and artwork samples (PNG/JPEG)
+          </p>
+          <p className="text-xs text-gray-500 mb-4">
+            Max 5 files, 10MB each. Supported: PDF, PNG, JPEG
+          </p>
+          <input
+            type="file"
+            multiple
+            accept=".pdf,.png,.jpg,.jpeg"
+            onChange={handleFileUpload}
+            className="hidden"
+            id="file-upload"
+          />
+          <label
+            htmlFor="file-upload"
+            className="bg-accent text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-accent/90 transition-colors"
+          >
+            Choose Files
+          </label>
+        </div>
+        
+        {/* File Preview */}
+        {uploadedFiles.length > 0 && (
+          <div className="mt-4 space-y-2">
+            <p className="text-sm font-medium text-dark">Uploaded Files:</p>
+            {uploadedFiles.map((file, index) => (
+              <div key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded-lg">
+                <span className="text-sm text-gray-700">{file.name}</span>
+                <button
+                  type="button"
+                  onClick={() => removeFile(index)}
+                  className="text-red-500 hover:text-red-700"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium text-dark mb-2">
+          Artistic Vision & Goals *
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={5}
+          value={formData.message}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
+          placeholder="Tell us about your artistic vision, what you hope to achieve through collaboration with MAPS, and your creative goals..."
+        />
+      </div>
+    </div>
+  );
+
+  const renderYouthForm = () => (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-dark mb-2">
+            Full Name *
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value={formData.name}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-cta focus:border-transparent transition-all"
+            placeholder="Your full name"
+          />
+        </div>
+        <div>
+          <label htmlFor="age" className="block text-sm font-medium text-dark mb-2">
+            Age *
+          </label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            required
+            min="13"
+            max="30"
+            value={formData.age}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-cta focus:border-transparent transition-all"
+            placeholder="Your age"
+          />
+        </div>
+      </div>
+      
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-dark mb-2">
+            Email Address *
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            value={formData.email}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-cta focus:border-transparent transition-all"
+            placeholder="your.email@example.com"
+          />
+        </div>
+        <div>
+          <label htmlFor="school" className="block text-sm font-medium text-dark mb-2">
+            School/University
+          </label>
+          <input
+            type="text"
+            id="school"
+            name="school"
+            value={formData.school}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-cta focus:border-transparent transition-all"
+            placeholder="Your school or university"
+          />
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="interest" className="block text-sm font-medium text-dark mb-2">
+            Interest Area *
+          </label>
+          <select
+            id="interest"
+            name="interest"
+            required
+            value={formData.interest}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-cta focus:border-transparent transition-all"
+          >
+            <option value="">Select interest area</option>
+            <option value="arts">Arts & Culture</option>
+            <option value="stem">STEM & Science</option>
+            <option value="leadership">Leadership & Development</option>
+            <option value="cultural-exchange">Cultural Exchange</option>
+            <option value="social-impact">Social Impact</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="availability" className="block text-sm font-medium text-dark mb-2">
+            Availability *
+          </label>
+          <select
+            id="availability"
+            name="availability"
+            required
+            value={formData.availability}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-cta focus:border-transparent transition-all"
+          >
+            <option value="">Select availability</option>
+            <option value="weekends">Weekends</option>
+            <option value="evenings">Evenings</option>
+            <option value="school-breaks">School breaks</option>
+            <option value="flexible">Flexible</option>
+          </select>
+        </div>
+      </div>
+      
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium text-dark mb-2">
+          Goals & Aspirations *
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={5}
+          value={formData.message}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-cta focus:border-transparent transition-all resize-none"
+          placeholder="Tell us about your goals, what you hope to learn, and how you'd like to contribute to MAPS' mission..."
+        />
+      </div>
+    </div>
+  );
+
+  const renderPressForm = () => (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-dark mb-2">
+            Full Name *
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value={formData.name}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+            placeholder="Your full name"
+          />
+        </div>
+        <div>
+          <label htmlFor="outlet" className="block text-sm font-medium text-dark mb-2">
+            Media Outlet *
+          </label>
+          <input
+            type="text"
+            id="outlet"
+            name="outlet"
+            required
+            value={formData.outlet}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+            placeholder="Your media outlet"
+          />
+        </div>
+      </div>
+      
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-dark mb-2">
+            Email Address *
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            value={formData.email}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+            placeholder="your.email@example.com"
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-dark mb-2">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+            placeholder="+1 (555) 123-4567"
+          />
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="articleType" className="block text-sm font-medium text-dark mb-2">
+            Article Type *
+          </label>
+          <select
+            id="articleType"
+            name="articleType"
+            required
+            value={formData.articleType}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+          >
+            <option value="">Select article type</option>
+            <option value="news">News Article</option>
+            <option value="feature">Feature Story</option>
+            <option value="interview">Interview</option>
+            <option value="press-release">Press Release</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="deadline" className="block text-sm font-medium text-dark mb-2">
+            Deadline
+          </label>
+          <input
+            type="date"
+            id="deadline"
+            name="deadline"
+            value={formData.deadline}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="targetAudience" className="block text-sm font-medium text-dark mb-2">
+          Target Audience
+        </label>
+        <input
+          type="text"
+          id="targetAudience"
+          name="targetAudience"
+          value={formData.targetAudience}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all"
+          placeholder="e.g., General public, Art enthusiasts, Cultural community..."
+        />
+      </div>
+
+      {/* File Upload Section */}
+      <div>
+        <label className="block text-sm font-medium text-dark mb-2">
+          Press Kit & Previous Articles
+        </label>
+        <div className="border-2 border-dashed border-teal/30 rounded-xl p-6 text-center hover:border-teal/50 transition-colors">
+          <Upload className="w-8 h-8 text-teal mx-auto mb-2" />
+          <p className="text-sm text-gray-600 mb-2">
+            Upload press kit (PDF) and previous articles (PDF)
+          </p>
+          <p className="text-xs text-gray-500 mb-4">
+            Max 5 files, 10MB each. Supported: PDF
+          </p>
+          <input
+            type="file"
+            multiple
+            accept=".pdf"
+            onChange={handleFileUpload}
+            className="hidden"
+            id="press-file-upload"
+          />
+          <label
+            htmlFor="press-file-upload"
+            className="bg-teal text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-teal/90 transition-colors"
+          >
+            Choose Files
+          </label>
+        </div>
+        
+        {/* File Preview */}
+        {uploadedFiles.length > 0 && (
+          <div className="mt-4 space-y-2">
+            <p className="text-sm font-medium text-dark">Uploaded Files:</p>
+            {uploadedFiles.map((file, index) => (
+              <div key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded-lg">
+                <span className="text-sm text-gray-700">{file.name}</span>
+                <button
+                  type="button"
+                  onClick={() => removeFile(index)}
+                  className="text-red-500 hover:text-red-700"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium text-dark mb-2">
+          Coverage Goals & Story Angle *
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={5}
+          value={formData.message}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-teal focus:border-transparent transition-all resize-none"
+          placeholder="Tell us about your coverage goals, story angle, and what aspects of MAPS you'd like to highlight..."
+        />
+      </div>
+    </div>
+  );
+
+  const renderInquiryForm = () => (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-dark mb-2">
+            Full Name *
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value={formData.name}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+            placeholder="Your full name"
+          />
+        </div>
+        <div>
+          <label htmlFor="organization" className="block text-sm font-medium text-dark mb-2">
+            Organization
+          </label>
+          <input
+            type="text"
+            id="organization"
+            name="organization"
+            value={formData.organization}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+            placeholder="Your organization"
+          />
+        </div>
+      </div>
+      
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-dark mb-2">
+            Email Address *
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            value={formData.email}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+            placeholder="your.email@example.com"
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-dark mb-2">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+            placeholder="+1 (555) 123-4567"
+          />
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="inquiryType" className="block text-sm font-medium text-dark mb-2">
+            Inquiry Type *
+          </label>
+          <select
+            id="inquiryType"
+            name="inquiryType"
+            required
+            value={formData.inquiryType}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+          >
+            <option value="">Select inquiry type</option>
+            <option value="general">General Inquiry</option>
+            <option value="event">Event Related</option>
+            <option value="partnership">Partnership</option>
+            <option value="media">Media Inquiry</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="timeline" className="block text-sm font-medium text-dark mb-2">
+            Timeline
+          </label>
+          <select
+            id="timeline"
+            name="timeline"
+            value={formData.timeline}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+          >
+            <option value="">Select timeline</option>
+            <option value="immediate">Immediate (1-2 weeks)</option>
+            <option value="short">Short term (1-3 months)</option>
+            <option value="medium">Medium term (3-6 months)</option>
+            <option value="long">Long term (6+ months)</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="budget" className="block text-sm font-medium text-dark mb-2">
+          Budget Range
+        </label>
+        <select
+          id="budget"
+          name="budget"
+          value={formData.budget}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
+        >
+          <option value="">Select budget range</option>
+          <option value="under-1k">Under $1,000</option>
+          <option value="1k-5k">$1,000 - $5,000</option>
+          <option value="5k-25k">$5,000 - $25,000</option>
+          <option value="25k-100k">$25,000 - $100,000</option>
+          <option value="100k+">$100,000+</option>
+          <option value="discuss">To be discussed</option>
+        </select>
+      </div>
+      
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium text-dark mb-2">
+          Specific Inquiry Details *
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={5}
+          value={formData.message}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all resize-none"
+          placeholder="Please provide specific details about your inquiry, what you're looking for, and how we can help..."
+        />
+      </div>
+    </div>
+  );
+
+  // Function to render the appropriate form based on activeForm
+  const renderForm = () => {
+    switch (activeForm) {
+      case 'sponsor':
+        return renderSponsorForm();
+      case 'partner':
+        return renderPartnerForm();
+      case 'artist':
+        return renderArtistForm();
+      case 'youth':
+        return renderYouthForm();
+      case 'press':
+        return renderPressForm();
+      case 'inquiry':
+        return renderInquiryForm();
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 relative">
       {/* Particle System Background */}
@@ -191,102 +1148,28 @@ const Connect = () => {
               })}
             </div>
 
-            {/* Contact Form */}
+            {/* Dynamic Contact Form */}
             {activeForm && (
               <div className="bg-white rounded-2xl shadow-elegant p-8 animate-scale-in">
-                <h3 className="text-2xl font-semibold text-dark mb-6 capitalize">
-                  {activeForm} Collaboration Form
-                </h3>
+                <div className="flex items-center gap-3 mb-6">
+                  {ctaButtons.find(btn => btn.id === activeForm)?.icon}
+                  <h3 className="text-2xl font-semibold text-dark capitalize">
+                    {activeForm} Collaboration Form
+                  </h3>
+                </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-dark mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
-                        placeholder="Your full name"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="organization" className="block text-sm font-medium text-dark mb-2">
-                        Organization
-                      </label>
-                      <input
-                        type="text"
-                        id="organization"
-                        name="organization"
-                        value={formData.organization}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
-                        placeholder="Your organization"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-dark mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="timeline" className="block text-sm font-medium text-dark mb-2">
-                      Expected Timeline
-                    </label>
-                    <select
-                      id="timeline"
-                      name="timeline"
-                      value={formData.timeline}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all"
-                    >
-                      <option value="">Select timeline</option>
-                      <option value="immediate">Immediate (1-2 weeks)</option>
-                      <option value="short">Short term (1-3 months)</option>
-                      <option value="medium">Medium term (3-6 months)</option>
-                      <option value="long">Long term (6+ months)</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-dark mb-2">
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-input rounded-xl focus:ring-2 focus:ring-magenta focus:border-transparent transition-all resize-none"
-                      placeholder="Tell us about your project, goals, and how you'd like to collaborate..."
-                    />
-                  </div>
+                  {renderForm()}
                   
                   <div className="flex gap-4">
                     <button
                       type="submit"
-                      className="neu-button text-dark px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2 pulse-glow"
+                      className={`neu-button text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2 pulse-glow ${
+                        activeForm === 'sponsor' || activeForm === 'inquiry' ? 'bg-magenta hover:bg-magenta/90' :
+                        activeForm === 'partner' || activeForm === 'press' ? 'bg-teal hover:bg-teal/90' :
+                        activeForm === 'artist' ? 'bg-accent hover:bg-accent/90' :
+                        'bg-cta hover:bg-cta/90'
+                      }`}
                     >
                       <Send className="w-5 h-5" />
                       Send Message
