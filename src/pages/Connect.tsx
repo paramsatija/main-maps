@@ -4,9 +4,16 @@ import { useToast } from "@/hooks/use-toast";
 import { useRipple } from "@/hooks/useAdvancedAnimations";
 import ParticleSystem from "@/components/ParticleSystem";
 import backgroundImage from "@/assets/background.jpg";
+import emailjs from '@emailjs/browser';
+
+// EmailJS Configuration
+const EMAILJS_SERVICE_ID = 'service_maps_international'; // You'll need to replace this with your actual service ID
+const EMAILJS_TEMPLATE_ID = 'template_contact_form'; // You'll need to replace this with your actual template ID
+const EMAILJS_PUBLIC_KEY = 'your_public_key_here'; // You'll need to replace this with your actual public key
 
 const Connect = () => {
   const [activeForm, setActiveForm] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     organization: "",
@@ -43,17 +50,66 @@ const Connect = () => {
     { id: "inquiry", label: "Inquiry", icon: <Mail className="w-5 h-5" />, color: "magenta" }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Simulate form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your interest. We'll get back to you within 24 hours.",
-    });
+    try {
+      // Prepare template parameters for EmailJS
+      const templateParams = {
+        form_type: activeForm?.charAt(0).toUpperCase() + activeForm?.slice(1) || 'Inquiry',
+        name: formData.name,
+        organization: formData.organization || 'Not provided',
+        email: formData.email,
+        phone: formData.phone || 'Not provided',
+        website: formData.website || 'Not provided',
+        message: formData.message,
+        timeline: formData.timeline || 'Not specified',
+        budget: formData.budget || 'Not specified',
+        type: formData.type || 'Not specified',
+        experience: formData.experience || 'Not specified',
+        age: formData.age || 'Not provided',
+        school: formData.school || 'Not provided',
+        interest: formData.interest || 'Not specified',
+        availability: formData.availability || 'Not specified',
+        art_style: formData.artStyle || 'Not specified',
+        medium: formData.medium || 'Not specified',
+        outlet: formData.outlet || 'Not provided',
+        article_type: formData.articleType || 'Not specified',
+        deadline: formData.deadline || 'Not specified',
+        target_audience: formData.targetAudience || 'Not specified',
+        inquiry_type: formData.inquiryType || 'Not specified',
+        files_count: uploadedFiles.length,
+        files_info: uploadedFiles.map(file => `${file.name} (${(file.size / 1024 / 1024).toFixed(2)}MB)`).join(', ') || 'No files uploaded',
+        to_email: 'info@mapsinternational.net',
+        reply_to: formData.email
+      };
 
-    // Reset form
-    resetForm();
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      toast({
+        title: "Message Sent!",
+        description: `Thank you for your ${activeForm} inquiry! We'll get back to you within 24 hours.`,
+      });
+
+      // Reset form
+      resetForm();
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "Error",
+        description: "Sorry, there was an error sending your message. Please try again or contact us directly at info@mapsinternational.net",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -1164,15 +1220,25 @@ const Connect = () => {
                   <div className="flex gap-4">
                     <button
                       type="submit"
-                      className={`neu-button text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2 pulse-glow ${
+                      disabled={isSubmitting}
+                      className={`neu-button text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2 pulse-glow disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 ${
                         activeForm === 'sponsor' || activeForm === 'inquiry' ? 'bg-magenta hover:bg-magenta/90' :
                         activeForm === 'partner' || activeForm === 'press' ? 'bg-teal hover:bg-teal/90' :
                         activeForm === 'artist' ? 'bg-accent hover:bg-accent/90' :
                         'bg-cta hover:bg-cta/90'
                       }`}
                     >
-                      <Send className="w-5 h-5" />
-                      Send Message
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-5 h-5" />
+                          Send Message
+                        </>
+                      )}
                     </button>
                     <button
                       type="button"
